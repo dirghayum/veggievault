@@ -13,7 +13,7 @@ public class DummyClassTest {
 
     @BeforeEach
     public void testName(){
-        dummyClass.result=-999;
+        dummyClass.result=-9999;
     }
 
     @Test
