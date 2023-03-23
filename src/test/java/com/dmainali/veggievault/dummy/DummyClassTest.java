@@ -27,7 +27,7 @@ public class DummyClassTest {
     public void negativeTest(){
         dummyClass.add(6,4);
         assertThat(dummyClass.result)
-                .isEqualTo(7);
+                .isEqualTo(10);
     }
 
 }
