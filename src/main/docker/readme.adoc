@@ -7,7 +7,7 @@ $ docker image rm pgimage
 ----
 $ docker image build -t pgimage src/main/docker/.
 ----
-- -t flag to give it the name of postgresdb, so that it can be referenced by that name when running the container
+- -t flag to give it the name of pgdb, so that it can be referenced by that name when running the container
 
 ##### To start a container from that image
 ----
