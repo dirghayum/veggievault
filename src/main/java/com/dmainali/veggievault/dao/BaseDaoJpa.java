@@ -1,6 +1,12 @@
 package com.dmainali.veggievault.dao;
 
 import java.util.List;
+/**
+ * This class implements BaseDao interface and overrides all its methods for CRUD operations.
+ * The class is to be used as a base class for other DAO (data access object) classes that work with JPA.
+ * @author Dirghayu Mainali
+ * @version 1.0
+ */
 
 public class BaseDaoJpa implements BaseDao{
     @Override

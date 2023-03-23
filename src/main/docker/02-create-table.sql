@@ -5,8 +5,8 @@ CREATE table veggieshop.category(
 
 CREATE TABLE veggieshop.item(
     id bigint primary key GENERATED ALWAYS AS IDENTITY,
-    category_id bigint not null,
     name varchar (150) unique,
+    category_id bigint not null,
     CONSTRAINT fk_category FOREIGN KEY(category_id) references veggieshop.category(id)
 
 );

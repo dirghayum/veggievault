@@ -1,0 +1,38 @@
+##### [Optional] If there is an old image of postgresdbimage and you want to delete it
+----
+$ docker image rm pgimage
+----
+
+##### To build the image
+----
+$ docker image build -t pgimage src/main/docker/.
+----
+- -t flag to give it the name of pgdb, so that it can be referenced by that name when running the container
+
+##### To start a container from that image
+----
+$ docker run  --name pgdb --rm -p 5432:5432 pgimage
+----
+- "pgdb" is the name of container
+- "pgimage" is the image from which we are running the container
+- --rm flag to tell docker to delete the container when exited
+- -p 5432:5432 to map container port (right) to host port (left)
+- Last argument "postgres" is the command to start the database
+
+##### Connect to datagrip
+- File → New → Data Source → Postgresql
+- Enter username (dmainali), password (Welcome1) and database (harvestdb) name
+- URL: jdbc:postgresql://localhost:5432/harvestdb?currentSchema=veggieshop
+- In schema tab, select `veggieshop` schema
+- Apply > OK
+
+Note:  if you cannot connect to the database, check if any instance of postgres is running on the host machine. if so you have two options:
+1. change container to host port mapping like -p 5431:5432
+2. or delete all instances (or stop) from host machine
+
+##### Connect to harvestdb inside the container
+- Go into the container by doing
+----
+$ docker exec -it pgdb bash
+$ psql -U dmainali -d harvestdb
+----
