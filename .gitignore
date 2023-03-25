@@ -1,6 +1,3 @@
-src/main/java/com/dmainali/veggievault/dummy
-src/test/java/com/dmainali/veggievault/dummy
-
 src/main/resources/application-local.yml
 HELP.md
 .mvn/
