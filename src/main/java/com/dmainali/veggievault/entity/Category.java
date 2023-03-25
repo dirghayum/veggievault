@@ -2,6 +2,7 @@ package com.dmainali.veggievault.entity;
 
 import com.google.common.base.MoreObjects;
 import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
 import lombok.*;
 
@@ -11,6 +12,8 @@ import lombok.*;
  * @author Dirghayu Mainali
  * @version 1.0
  */
+
+@Entity
 @Getter
 @Setter
 @Table(name="category")

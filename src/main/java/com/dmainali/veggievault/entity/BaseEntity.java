@@ -21,6 +21,7 @@ import java.io.Serializable;
 @Getter
 @Setter
 @SuperBuilder
+@MappedSuperclass
 public abstract class BaseEntity implements Serializable {
     public static final long serialVersionUID = 1L;
 
