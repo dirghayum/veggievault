@@ -30,7 +30,11 @@ This will start the application on port 8088.
 - Open a web browser and go to http://localhost:8088 to access the application.
 
 .Running Jenkins on Localhost:8090
+- Note: Jenkins is installed in docker so open terminal and run the command: +
+---
+$ docker start jenkins
+---
 - Open a web browser and go to http://localhost:8090.
 - Follow the prompts to set up Jenkins.
-T
-hat's it! You should now be able to use the VeggieVault application and Jenkins on your local machine.
+
+That's it! You should now be able to use the VeggieVault application and Jenkins on your local machine.
