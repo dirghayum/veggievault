@@ -10,7 +10,7 @@ import lombok.*;
  * @author Dirghayu Mainali
  * @version 1.0
  */
-
+@Entity
 @Getter
 @Setter
 @Table(name="item")

@@ -10,27 +10,27 @@ import java.util.List;
  * @author Dirghayu Mainali
  * @version 1.0
  */
-public interface BaseDao {
+public interface BaseDao<T> {
 
     /**
      * This method retrieves all entities from the data source.
      * @return the list of objects that represents all entities in the data source.
      */
-    List<Object> findAll();
+    List<T> findAll();
 
     /**
      * This method retrieves an entity from the data source by its ID.
      * @param id the ID of the entity to retrieve
      * @return Object representing the entity with the specified ID
      */
-    Object findById(Long id);
+    T findById(Long id);
 
     /**
      * This method saves an entity to the data source.
      * @param entity the entity to save
      * @return  Object that represents the saved entity
      */
-    Object save(Object entity);
+    T save(T entity);
 
     /**
      * This method deletes an entity from the data source by its ID.
@@ -42,5 +42,5 @@ public interface BaseDao {
      * This method deletes an entity from the data source.
      * @param entity the entity to delete
      */
-    void delete(Object entity);
+    void delete(T entity);
 }

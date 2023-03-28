@@ -3,13 +3,12 @@ package com.dmainali.veggievault.controller;
 import com.dmainali.veggievault.entity.Category;
 import com.dmainali.veggievault.entity.Vegetable;
 import com.dmainali.veggievault.service.VeggieService;
-import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.Set;
+import java.util.List;
 
 /**
  * This class is a Spring REST controller that handles requests related to vegetables.
@@ -26,6 +25,11 @@ public class VeggieController {
     @GetMapping(value= "/getCategory/{id}")
     public Category findCategoryByID(@PathVariable Long id){
         return veggieService.findById(id);
+    }
+
+    @GetMapping(value= "/getVeggies")
+    public List<Vegetable> findAllVeggies(){
+        return veggieService.findAllVegetables();
     }
 
 }
