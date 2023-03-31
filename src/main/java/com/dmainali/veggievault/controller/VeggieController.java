@@ -1,8 +1,11 @@
 package com.dmainali.veggievault.controller;
 
+import com.dmainali.veggievault.dto.VegetableDTO;
 import com.dmainali.veggievault.entity.Category;
 import com.dmainali.veggievault.entity.Vegetable;
+import com.dmainali.veggievault.service.VegetableFinderService;
 import com.dmainali.veggievault.service.VeggieService;
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -17,10 +20,12 @@ import java.util.List;
  * @version 1.0
  */
 @RestController
+@AllArgsConstructor(onConstructor = @__({@Autowired}))
 public class VeggieController {
-    @Autowired
 
     VeggieService veggieService;
+
+    VegetableFinderService vegetableFinderService;
 
     @GetMapping(value= "/getCategory/{id}")
     public Category findCategoryByID(@PathVariable Long id){
@@ -30,6 +35,12 @@ public class VeggieController {
     @GetMapping(value= "/getVeggies")
     public List<Vegetable> findAllVeggies(){
         return veggieService.findAllVegetables();
+    }
+
+
+    @GetMapping(value= "/getRandom")
+    public List<VegetableDTO> getRandomVegetable(){
+        return vegetableFinderService.getRandom();
     }
 
 }
