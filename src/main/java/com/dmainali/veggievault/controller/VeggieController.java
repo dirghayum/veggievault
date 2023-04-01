@@ -2,10 +2,11 @@ package com.dmainali.veggievault.controller;
 
 import com.dmainali.veggievault.dto.VegetableDTO;
 import com.dmainali.veggievault.entity.Category;
+import com.dmainali.veggievault.entity.ResultWrapper;
 import com.dmainali.veggievault.entity.Vegetable;
+import com.dmainali.veggievault.exception.VegetableNotFoundException;
 import com.dmainali.veggievault.service.VegetableFinderService;
 import com.dmainali.veggievault.service.VeggieService;
-import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -20,12 +21,17 @@ import java.util.List;
  * @version 1.0
  */
 @RestController
-@AllArgsConstructor(onConstructor = @__({@Autowired}))
 public class VeggieController {
 
     VeggieService veggieService;
-
     VegetableFinderService vegetableFinderService;
+    ResultWrapper wrapper = new ResultWrapper();
+
+    @Autowired
+    public VeggieController(VeggieService veggieService, VegetableFinderService vegetableFinderService) {
+        this.veggieService = veggieService;
+        this.vegetableFinderService = vegetableFinderService;
+    }
 
     @GetMapping(value= "/getCategory/{id}")
     public Category findCategoryByID(@PathVariable Long id){
@@ -39,8 +45,18 @@ public class VeggieController {
 
 
     @GetMapping(value= "/getRandom")
-    public List<VegetableDTO> getRandomVegetable(){
-        return vegetableFinderService.getRandom();
+    public ResultWrapper getRandomVegetable(){
+        long start = System.currentTimeMillis();
+        try {
+            List<VegetableDTO> vegetableDTOList = vegetableFinderService.getRandom();
+            wrapper.setVegetable(vegetableDTOList);
+        }catch(VegetableNotFoundException exception){
+            wrapper.setVegetableNotFoundException(exception);
+        }
+        long end = System.currentTimeMillis();
+        long timeTaken = end - start;
+        System.out.println("Time Taken :" + timeTaken+"ms");
+        return wrapper;
     }
 
 }
