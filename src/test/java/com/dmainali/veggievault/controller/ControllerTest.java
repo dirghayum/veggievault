@@ -8,12 +8,14 @@ import org.easymock.EasyMockExtension;
 import org.easymock.Mock;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @ExtendWith(EasyMockExtension.class)
+@WebMvcTest(value = VeggieController.class)
 public class ControllerTest {
 
     @Mock
@@ -22,7 +24,6 @@ public class ControllerTest {
     /**
      * Test case to verify that VeggieController.findCategoryByID() method returns a category
      * object with the correct name when a valid category id is passed as input.
-     *
      */
     @Test
     public void testFindCategoryByID() {

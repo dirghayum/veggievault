@@ -4,8 +4,12 @@ import com.dmainali.veggievault.entity.BaseEntity;
 import com.dmainali.veggievault.entity.Category;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
+import jakarta.persistence.PersistenceException;
 import jakarta.persistence.Query;
+import jakarta.transaction.Transactional;
 import lombok.extern.slf4j.Slf4j;
+import org.hibernate.Session;
+import org.hibernate.TransientObjectException;
 
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
@@ -55,6 +59,7 @@ public class BaseDaoJpa<T extends BaseEntity> implements BaseDao<T>{
     }
 
     @Override
+    @Transactional
     public T save(T entity) {
         T tmp = entity;
         entityManager.persist(entity);
@@ -62,6 +67,37 @@ public class BaseDaoJpa<T extends BaseEntity> implements BaseDao<T>{
         entityManager.refresh(tmp);
         return tmp;
     }
+
+//    @Override
+//    public T save(T entity) {
+//        T tmp = entity;
+//        if(entity.getId() != null){
+//            log.debug("     merge()");
+//            tmp = entityManager.merge(entity);
+//            entityManager.flush();
+//
+//            Object delegate = entityManager.getDelegate();
+//            if(Session.class.isAssignableFrom(delegate.getClass())){
+//                ((Session)delegate).refresh(tmp);
+//            }else{
+//                log.warn("Can't refresh: "+delegate.getClass() + "Is not a Session object");
+//            }
+//        }else{
+//            log.debug("     persist()");
+//            try{
+//                entityManager.persist(entity);
+//                entityManager.flush();
+//                entityManager.refresh(tmp);
+//            }catch (IllegalStateException e){
+//                Throwable cause = e.getCause();
+//                if(TransientObjectException.class.isAssignableFrom(cause.getClass())){
+//                    throw new PersistenceException(cause.getMessage(),cause);
+//                }
+//                throw e;
+//            }
+//        }
+//        return tmp;
+//    }
 
     @Override
     public void delete(Long id) {
