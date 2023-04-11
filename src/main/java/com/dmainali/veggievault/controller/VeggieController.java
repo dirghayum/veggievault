@@ -7,6 +7,7 @@ import com.dmainali.veggievault.entity.Vegetable;
 import com.dmainali.veggievault.exception.VeggieException;
 import com.dmainali.veggievault.service.VeggieService;
 import jakarta.transaction.Transactional;
+import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -22,6 +23,7 @@ import java.util.List;
  */
 @Transactional
 @RestController
+@NoArgsConstructor
 public class VeggieController {
 
     VeggieService veggieService;

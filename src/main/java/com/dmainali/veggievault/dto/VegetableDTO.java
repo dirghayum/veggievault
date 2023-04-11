@@ -10,6 +10,7 @@ import java.util.Objects;
 @AllArgsConstructor
 @NoArgsConstructor
 public class VegetableDTO {
+
         private String vegetableName;
 
         private String scientificName;

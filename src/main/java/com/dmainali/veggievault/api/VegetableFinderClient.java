@@ -33,9 +33,8 @@ public class VegetableFinderClient {
     private static final String VEGETABLE_FINDER_BASEURL = "http://localhost:8011/getVegetables";
 
     /**
-     * Retrieves a list of 50 random vegetables from an external API and returns it as a list of VegetableDTO objects.
-     *
-     * @return a list of 50 VegetableDTO objects representing random vegetables.
+     * Retrieves a list of 100 random vegetables from an external API and returns it as a list of VegetableDTO objects.
+     * @return a list of 100 VegetableDTO objects representing random vegetables.
      * @throws VeggieException custom exception if an error occurs while processing the response from the external API.
      * @throws RestClientException exception if connection error occurs in external API.
      */

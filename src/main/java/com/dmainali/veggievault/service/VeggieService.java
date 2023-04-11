@@ -6,7 +6,6 @@ import com.dmainali.veggievault.dao.VegetableDao;
 import com.dmainali.veggievault.dto.VegetableDTO;
 import com.dmainali.veggievault.entity.Category;
 import com.dmainali.veggievault.entity.Vegetable;
-import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -29,7 +28,6 @@ public class VeggieService {
 
     private VegetableFinderClient vegetableFinder;
 
-    @Transactional
     public Category findById(Long id) {
         return categoryDao.findById(id);
     }

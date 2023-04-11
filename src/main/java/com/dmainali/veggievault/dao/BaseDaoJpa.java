@@ -4,12 +4,9 @@ import com.dmainali.veggievault.entity.BaseEntity;
 import com.dmainali.veggievault.entity.Category;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
-import jakarta.persistence.PersistenceException;
 import jakarta.persistence.Query;
 import jakarta.transaction.Transactional;
 import lombok.extern.slf4j.Slf4j;
-import org.hibernate.Session;
-import org.hibernate.TransientObjectException;
 
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
